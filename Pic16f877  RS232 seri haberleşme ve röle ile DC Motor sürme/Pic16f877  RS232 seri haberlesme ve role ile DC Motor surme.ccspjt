@@ -1,0 +1,52 @@
+[PROJECT]
+Target=RS232 Seri Haberlesme.hex
+Processor_Text=PIC16F877
+CCSVersion=5.049
+Compiler=PCM
+[Target Data]
+FileList=RS232 Seri Haberlesme.c
+[RS232 Seri Haberlesme.c]
+Type=4
+[mru-list]
+1=RS232 Seri Haberlesme.c
+
+[defines]
+buildcount=11
+
+[Opened Files]
+1=RS232 Seri Haberlesme.c
+t1=17
+Count=1
+
+[ProjectLog]
+Days=3
+D1=25-04-2022
+D1_L=4
+D1_L1=[63632]Stopped Editing.
+D1_L2=[64468]Started Editing.
+D1_L3=[64766]Stopped Editing.
+TotalEdit=15
+TotalDebug=0
+D1_E=11
+D1_D=0
+D1_L4=[64766]Project Closed.
+D2=26-04-2022
+D2_L=1
+D2_L1=[84310]Project Opened.
+D3=27-04-2022
+D3_L=10
+D3_L1=[2847]Started Editing.
+D3_L2=[3347]Project Closed.
+D3_L3=[8259]Project Opened.
+D3_L4=[8523]Started Editing.
+D3_L5=[8704]Stopped Editing.
+D3_E=4
+D3_D=0
+D3_L6=[8704]Project Closed.
+D3_L7=[8836]Project Opened.
+D3_L8=[8847]Project Closed.
+D3_L9=[12794]Project Opened.
+D3_L10=[12801]Project Closed.
+[Units]
+Count=1
+1=RS232 Seri Haberlesme (main)

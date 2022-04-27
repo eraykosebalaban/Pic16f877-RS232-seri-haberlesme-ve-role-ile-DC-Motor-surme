@@ -1,0 +1,134 @@
+CCS PCM C Compiler, Version 5.049, 5967               27-Nis-22 02:23
+
+               Filename:   C:\Users\Eray\Desktop\Pic168f77 Projeleri\Pic16f877 ile RS232 Seri haberleþme\RS232 Seri Haberlesme.lst
+
+               ROM used:   62 words (1%)
+                           Largest free fragment is 2048
+               RAM used:   6 (2%) at main() level
+                           6 (2%) worst case
+               Stack used: 0 locations
+               Stack size: 8
+
+*
+0000:  MOVLW  00
+0001:  MOVWF  0A
+0002:  GOTO   004
+0003:  NOP
+.................... #include<16f877.h> 
+.................... //////////// Standard Header file for the PIC16F877 device //////////////// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... ////        (C) Copyright 1996, 2014 Custom Computer Services          //// 
+.................... //// This source code may only be used by licensed users of the CCS C  //// 
+.................... //// compiler.  This source code may only be distributed to other      //// 
+.................... //// licensed users of the CCS C compiler.  No other use, reproduction //// 
+.................... //// or distribution is permitted without written permission.          //// 
+.................... //// Derivative programs created using this software in object code    //// 
+.................... //// form are not restricted in any way.                               //// 
+.................... /////////////////////////////////////////////////////////////////////////// 
+.................... #device PIC16F877 
+....................  
+.................... #list 
+....................  
+....................  
+.................... #use delay(clock = 4000000) 
+....................  
+.................... #use fast_io(b) 
+.................... #use fast_io(c) 
+....................  
+.................... #use rs232(baud=9600, xmit=pin_c6, rcv=pin_c7, parity=N, stop=1) 
+....................  
+.................... int veri; 
+....................  
+.................... void main(){ 
+0004:  MOVF   03,W
+0005:  ANDLW  1F
+0006:  MOVWF  03
+0007:  MOVLW  19
+0008:  BSF    03.5
+0009:  MOVWF  19
+000A:  MOVLW  A6
+000B:  MOVWF  18
+000C:  MOVLW  90
+000D:  BCF    03.5
+000E:  MOVWF  18
+000F:  BSF    03.5
+0010:  BSF    1F.0
+0011:  BSF    1F.1
+0012:  BSF    1F.2
+0013:  BCF    1F.3
+0014:  BCF    03.7
+.................... setup_psp(PSP_DISABLED); 
+0015:  BCF    09.4
+.................... setup_timer_1(T1_DISABLED); 
+0016:  BCF    03.5
+0017:  CLRF   10
+.................... setup_timer_2(T2_DISABLED,0,1); 
+0018:  MOVLW  00
+0019:  MOVWF  78
+001A:  MOVWF  12
+001B:  MOVLW  00
+001C:  BSF    03.5
+001D:  MOVWF  12
+.................... setup_adc_ports(NO_ANALOGS); 
+001E:  BSF    1F.0
+001F:  BSF    1F.1
+0020:  BSF    1F.2
+0021:  BCF    1F.3
+.................... setup_adc(ADC_OFF); 
+0022:  BCF    03.5
+0023:  BCF    1F.0
+.................... setup_ccp1(CCP_OFF); 
+0024:  MOVLW  F0
+0025:  ANDWF  17,F
+.................... setup_ccp2(CCP_OFF); 
+0026:  ANDWF  1D,F
+....................  
+.................... set_tris_b(0x00); 
+0027:  MOVLW  00
+0028:  BSF    03.5
+0029:  MOVWF  06
+.................... set_tris_c(0xFF); 
+002A:  MOVLW  FF
+002B:  MOVWF  07
+....................  
+.................... output_b(0x00); 
+002C:  BCF    03.5
+002D:  CLRF   06
+....................  
+.................... while(true){ 
+.................... veri = getc(); //  
+002E:  BTFSS  0C.5
+002F:  GOTO   02E
+0030:  MOVF   1A,W
+0031:  MOVWF  20
+....................  
+.................... if(veri=='B'){ 
+0032:  MOVF   20,W
+0033:  SUBLW  42
+0034:  BTFSS  03.2
+0035:  GOTO   038
+.................... output_high(pin_b0); 
+0036:  BSF    06.0
+....................  
+.................... } 
+0037:  GOTO   03C
+....................  
+.................... else if(veri=='D'){ 
+0038:  MOVF   20,W
+0039:  SUBLW  44
+003A:  BTFSC  03.2
+.................... output_low(pin_b0); 
+003B:  BCF    06.0
+....................  
+.................... } 
+003C:  GOTO   02E
+....................  
+....................  
+....................  
+....................  
+.................... } 
+.................... } 
+003D:  SLEEP
+
+Configuration Fuses:
+   Word  1: 3B73   RC NOWDT PUT BROWNOUT NOLVP NOCPD NOWRT NODEBUG NOPROTECT
